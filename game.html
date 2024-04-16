@@ -86,6 +86,7 @@
 
     // Function for battle button
     function battle() {
+      let playerHp = 5; // Reset player HP for each battle
       const enemy = Math.floor(Math.random() * 2) + 1; // Randomly choose between zombie and creep
       let enemyHp = (enemy === 1) ? 2 : 3; // Set enemy health based on enemy type
 
@@ -116,7 +117,4 @@
     }
 
     // Add event listener to the start button
-    document.getElementById('start-button').addEventListener('click', startGame);
-  </script>
-</body>
-</html>
+    document.getElementById('start
