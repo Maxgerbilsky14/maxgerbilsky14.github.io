@@ -66,11 +66,11 @@
         <p>Player HP: ${playerHp}</p>
         <p>Player Coins: ${playerCoins}</p>
         <button class="button surrender-button" onclick="surrender()">SURRENDER</button>
-        <button class="button battle-button">BATTLE</button>
+        <button class="button battle-button" id="battle-button">BATTLE</button>
       `;
 
       // Add event listener to the battle button
-      document.querySelector('.battle-button').addEventListener('click', battle);
+      document.getElementById('battle-button').addEventListener('click', battle);
     }
 
     // Function for surrender button
