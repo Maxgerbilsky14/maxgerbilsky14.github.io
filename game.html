@@ -37,7 +37,7 @@
     </select>
     <br>
     <!-- Start button -->
-    <button class="button" onclick="startGame()">Start Game</button>
+    <button class="button" id="start-button">Start Game</button>
   </div>
 
   <script>
@@ -66,8 +66,11 @@
         <p>Player HP: ${playerHp}</p>
         <p>Player Coins: ${playerCoins}</p>
         <button class="button surrender-button" onclick="surrender()">SURRENDER</button>
-        <button class="button battle-button" onclick="battle()">BATTLE</button>
+        <button class="button battle-button">BATTLE</button>
       `;
+
+      // Add event listener to the battle button
+      document.querySelector('.battle-button').addEventListener('click', battle);
     }
 
     // Function for surrender button
@@ -111,6 +114,9 @@
         `;
       }
     }
+
+    // Add event listener to the start button
+    document.getElementById('start-button').addEventListener('click', startGame);
   </script>
 </body>
 </html>
