@@ -2,14 +2,22 @@
 <html>
 <head>
   <style>
-    /* Style for the surrender button */
-    .surrender-button {
-      padding: 10px 20px; /* Adjust padding to make the button smaller */
+    /* Style for the surrender and battle buttons */
+    .surrender-button, .battle-button {
+      padding: 10px 20px; /* Adjust padding to make the buttons smaller */
       font-size: 14px; /* Adjust font size to make the text smaller */
-      background-color: red; /* Change background color to make it stand out */
       color: white; /* Change text color to make it readable */
       border: none; /* Remove border */
       cursor: pointer; /* Add cursor pointer for better user experience */
+      width: 50%; /* Make both buttons the same width as the image */
+    }
+
+    .surrender-button {
+      background-color: red; /* Change background color of surrender button */
+    }
+
+    .battle-button {
+      background-color: green; /* Change background color of battle button */
     }
 
     /* Style for the image */
@@ -36,6 +44,9 @@
   <!-- Surrender button -->
   <button class="surrender-button" onclick="surrender()">SURRENDER</button>
 
+  <!-- Battle button -->
+  <button class="battle-button" onclick="battle()">BATTLE</button>
+
   <!-- Clearfix to prevent overlapping -->
   <div class="clearfix"></div>
 
@@ -44,7 +55,11 @@
       // Redirect the user to another page
       window.location.href = "https://www.samsung.com/uk/mobile-phone-buying-guide/samsung-phone-ranges-explained/";
     }
+
+    function battle() {
+      // Redirect the user to another HTML file
+      window.location.href = "battle.html";
+    }
   </script>
 </body>
 </html>
-
