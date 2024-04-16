@@ -41,6 +41,12 @@
   </div>
 
   <script>
+    // Global variables
+    let playerHp = 5;
+    let playerLevel = 1;
+    let playerDamage = 1;
+    let playerCoins = 10;
+
     // Function to start the game
     function startGame() {
       // Get username and weapon selection
@@ -48,10 +54,7 @@
       const weapon = document.getElementById('weapon-select').value;
 
       // Initialize player stats
-      let playerDamage = (weapon === 'sword') ? 1 : Math.floor(Math.random() * 4);
-      let playerLevel = 1;
-      let playerHp = 5;
-      let playerCoins = 10;
+      playerDamage = (weapon === 'sword') ? 1 : Math.floor(Math.random() * 4);
 
       // Display intro message
       document.getElementById('game-container').innerHTML = `
@@ -70,6 +73,12 @@
     // Function for surrender button
     function surrender() {
       window.location.href = "https://www.samsung.com/uk/mobile-phone-buying-guide/samsung-phone-ranges-explained/";
+    }
+
+    // Function to get player damage based on weapon
+    function getPlayerDamage() {
+      const weapon = document.getElementById('weapon-select').value;
+      return (weapon === 'sword') ? 1 : Math.floor(Math.random() * 4);
     }
 
     // Function for battle button
@@ -101,12 +110,6 @@
           <p>You were defeated by the enemy. Game over.</p>
         `;
       }
-    }
-
-    // Function to get player damage based on weapon
-    function getPlayerDamage() {
-      const weapon = document.getElementById('weapon-select').value;
-      return (weapon === 'sword') ? 1 : Math.floor(Math.random() * 4);
     }
   </script>
 </body>
