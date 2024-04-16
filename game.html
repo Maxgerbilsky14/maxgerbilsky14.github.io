@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAX Game</title>
+  <style>
+    /* Styles for buttons */
+    .button {
+      padding: 10px 20px;
+      font-size: 14px;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    .surrender-button {
+      background-color: red;
+    }
+    .battle-button {
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <h1>MAX Game</h1>
+  <div id="game-container">
+    <!-- Username input -->
+    <label for="username">Enter your username:</label>
+    <input type="text" id="username">
+    <br>
+    <!-- Weapon selection -->
+    <label for="weapon-select">Choose your weapon:</label>
+    <select id="weapon-select">
+      <option value="sword">Sword</option>
+      <option value="bow">Bow</option>
+    </select>
+    <br>
+    <!-- Start button -->
+    <button class="button" onclick="startGame()">Start Game</button>
+  </div>
+
+  <script>
+    // Function to start the game
+    function startGame() {
+      // Get username and weapon selection
+      const username = document.getElementById('username').value;
+      const weapon = document.getElementById('weapon-select').value;
+
+      // Initialize player stats
+      let playerDamage = (weapon === 'sword') ? 1 : Math.floor(Math.random() * 4);
+      let playerLevel = 1;
+      let playerHp = 5;
+      let playerCoins = 10;
+
+      // Display intro message
+      document.getElementById('game-container').innerHTML = `
+        <p>Welcome to the MAX game, ${username}!</p>
+        <p>Your starting stats are:</p>
+        <p>Weapon: ${weapon}</p>
+        <p>Damage: ${playerDamage}</p>
+        <p>Player Level: ${playerLevel}</p>
+        <p>Player HP: ${playerHp}</p>
+        <p>Player Coins: ${playerCoins}</p>
+        <button class="button surrender-button" onclick="surrender()">SURRENDER</button>
+        <button class="button battle-button" onclick="battle()">BATTLE</button>
+      `;
+    }
+
+    // Function for surrender button
+    function surrender() {
+      window.location.href = "https://www.samsung.com/uk/mobile-phone-buying-guide/samsung-phone-ranges-explained/";
+    }
+
+    // Function for battle button
+    function battle() {
+      const enemy = Math.floor(Math.random() * 2) + 1; // Randomly choose between zombie and creep
+      let enemyHp = (enemy === 1) ? 2 : 3; // Set enemy health based on enemy type
+
+      while (enemyHp > 0 && playerHp > 0) {
+        let playerDamage = getPlayerDamage(); // Get player damage
+        let enemyDamage = Math.floor(Math.random() * 3) + 1; // Enemy damage random between 1 and 3
+
+        // Update enemy HP and player HP
+        enemyHp -= playerDamage;
+        playerHp -= enemyDamage;
+      }
+
+      // Display battle outcome
+      if (enemyHp <= 0) {
+        playerLevel += 2;
+        playerCoins += (enemy === 1) ? 5 : 10; // Add coins based on enemy type
+        playerDamage++; // Increase player damage
+        playerLevel++; // Increase player level
+
+        document.getElementById('game-container').innerHTML += `
+          <p>Enemy defeated! You gained 5 coins and leveled up.</p>
+        `;
+      } else {
+        document.getElementById('game-container').innerHTML += `
+          <p>You were defeated by the enemy. Game over.</p>
+        `;
+      }
+    }
+
+    // Function to get player damage based on weapon
+    function getPlayerDamage() {
+      const weapon = document.getElementById('weapon-select').value;
+      return (weapon === 'sword') ? 1 : Math.floor(Math.random() * 4);
+    }
+  </script>
+</body>
+</html>
