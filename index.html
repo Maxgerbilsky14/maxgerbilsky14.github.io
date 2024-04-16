@@ -4,12 +4,25 @@
   <style>
     /* Style for the surrender button */
     .surrender-button {
-      padding: 20px 40px; /* Adjust padding to make the button larger */
-      font-size: 20px; /* Adjust font size to make the text larger */
+      padding: 10px 20px; /* Adjust padding to make the button smaller */
+      font-size: 14px; /* Adjust font size to make the text smaller */
       background-color: red; /* Change background color to make it stand out */
       color: white; /* Change text color to make it readable */
       border: none; /* Remove border */
       cursor: pointer; /* Add cursor pointer for better user experience */
+    }
+
+    /* Style for the image */
+    .casino-image {
+      float: left; /* Float the image to the left */
+      width: 50%; /* Set the image width to half of the container */
+    }
+
+    /* Clearfix to prevent overlapping */
+    .clearfix::after {
+      content: "";
+      clear: both;
+      display: table;
     }
   </style>
 </head>
@@ -17,10 +30,14 @@
   <h1>YOU HAVE MADE THE CASINO MAD!</h1>
   <p>PREPARE FOR BATTLE OR SURRENDER.</p>
   
+  <!-- Image -->
+  <img src="Bad-poker-player-800x600.jpg" alt="Description of the image" class="casino-image">
+
   <!-- Surrender button -->
   <button class="surrender-button" onclick="surrender()">SURRENDER</button>
 
-  <img src="Bad-poker-player-800x600.jpg" alt="Description of the image">
+  <!-- Clearfix to prevent overlapping -->
+  <div class="clearfix"></div>
 
   <script>
     function surrender() {
@@ -30,3 +47,4 @@
   </script>
 </body>
 </html>
+
