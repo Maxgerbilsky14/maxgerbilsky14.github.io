@@ -78,12 +78,6 @@
       window.location.href = "https://www.samsung.com/uk/mobile-phone-buying-guide/samsung-phone-ranges-explained/";
     }
 
-    // Function to get player damage based on weapon
-    function getPlayerDamage() {
-      const weapon = document.getElementById('weapon-select').value;
-      return (weapon === 'sword') ? 1 : Math.floor(Math.random() * 4);
-    }
-
     // Function for battle button
     function battle() {
       // Randomly determine if the player won or lost
@@ -91,9 +85,8 @@
 
       // Display battle outcome
       if (result === 'won') {
-        document.getElementById('game-container').innerHTML += `
-          <p>You won the battle! Congratulations!</p>
-        `;
+        // Redirect to YouTube if the player wins
+        window.location.href = "https://www.youtube.com/";
       } else {
         document.getElementById('game-container').innerHTML += `
           <p>You lost the battle! Better luck next time!</p>
