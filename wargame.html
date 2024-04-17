@@ -60,8 +60,7 @@
         var result = '';
         if (firstOne > secondOne) {
           result = 'You won!';
-
-          redirectToYouTube();
+          showResult(result);
           break;
         } else if (firstOne < secondOne) {
           result = 'You lost!';
@@ -78,6 +77,18 @@
           gameOn = false;
           break;
         }
+      }
+    }
+
+    function showResult(result) {
+      var gameResults = document.getElementById('game-results');
+      var gameRoundResult = document.createElement('p');
+      gameRoundResult.textContent = result;
+      gameResults.appendChild(gameRoundResult);
+
+      var proceed = confirm('Are you ready to proceed?');
+      if (proceed) {
+        redirectToYouTube();
       }
     }
 
