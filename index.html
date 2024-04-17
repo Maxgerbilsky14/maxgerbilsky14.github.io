@@ -2,34 +2,58 @@
 <html>
 <head>
   <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    p {
+      color: #666;
+      margin-bottom: 20px;
+    }
+
     /* Style for the surrender and battle buttons */
     .surrender-button, .battle-button {
-      padding: 10px 20px; /* Adjust padding to make the buttons smaller */
-      font-size: 14px; /* Adjust font size to make the text smaller */
-      color: white; /* Change text color to make it readable */
-      border: none; /* Remove border */
-      cursor: pointer; /* Add cursor pointer for better user experience */
-      width: 50%; /* Make both buttons the same width as the image */
+      padding: 15px 40px;
+      font-size: 18px;
+      color: white;
+      border: none;
+      cursor: pointer;
+      width: 150px;
+      margin: 10px;
+      transition: all 0.3s ease;
     }
 
     .surrender-button {
-      background-color: red; /* Change background color of surrender button */
+      background-color: #ff5f5f;
+    }
+
+    .surrender-button:hover {
+      background-color: #ff3333;
     }
 
     .battle-button {
-      background-color: green; /* Change background color of battle button */
+      background-color: #4caf50;
+    }
+
+    .battle-button:hover {
+      background-color: #45a049;
     }
 
     /* Style for the image */
     .casino-image {
-      width: 50%; /* Set the image width to half of the container */
-    }
-
-    /* Clearfix to prevent overlapping */
-    .clearfix::after {
-      content: "";
-      clear: both;
-      display: table;
+      width: 80%;
+      max-width: 600px;
+      display: block;
+      margin: 0 auto;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     }
   </style>
 </head>
@@ -45,9 +69,6 @@
   
   <!-- Image -->
   <img src="Bad-poker-player-800x600.jpg" alt="Description of the image" class="casino-image">
-
-  <!-- Clearfix to prevent overlapping -->
-  <div class="clearfix"></div>
 
   <script>
     function surrender() {
