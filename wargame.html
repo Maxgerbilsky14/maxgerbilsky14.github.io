@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>War Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    p {
+      color: #666;
+    }
+
+    .button {
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      background-color: #007bff;
+      border: none;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .button:hover {
+      background-color: #0056b3;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>War Game</h1>
+  <p>Hello, welcome to the war game!</p>
+  <p>Press 'Start' to begin playing:</p>
+  <button class="button" onclick="startGame()">Start</button>
+
+  <div id="game-results"></div>
+
+  <script>
+    function startGame() {
+      var gameResults = document.getElementById('game-results');
+      gameResults.innerHTML = '';
+
+      var gameOn = true;
+
+      while (gameOn) {
+        var firstOne = Math.floor(Math.random() * 13) + 1;
+        var secondOne = Math.floor(Math.random() * 13) + 1;
+
+        var result = '';
+        if (firstOne > secondOne) {
+          result = 'You won!';
+          redirectToYouTube();
+          break;
+        } else if (firstOne < secondOne) {
+          result = 'You lost!';
+        } else {
+          result = 'It\'s a tie!';
+        }
+
+        var gameRoundResult = document.createElement('p');
+        gameRoundResult.textContent = 'Your card: ' + firstOne + ', Opponent\'s card: ' + secondOne + '. ' + result;
+        gameResults.appendChild(gameRoundResult);
+
+        var playAgain = confirm('Do you want to play again?');
+        if (!playAgain) {
+          gameOn = false;
+          break;
+        }
+      }
+    }
+
+    function redirectToYouTube() {
+      window.location.href = 'https://www.youtube.com/';
+    }
+  </script>
+</body>
+</html>
