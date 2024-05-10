@@ -79,12 +79,17 @@
     <div id="go-to-calculator-button" style="display:none;">
       <button class="button" onclick="goToCalculator()">Go to Calculator</button>
     </div>
+
+    <div id="next-button" style="display:none;">
+      <button class="button" onclick="nextRound()">Next</button>
+    </div>
   </div>
 
   <script>
     var gameResults = document.getElementById('game-results');
     var playAgainButton = document.getElementById('play-again-button');
     var goToCalculatorButton = document.getElementById('go-to-calculator-button');
+    var nextButton = document.getElementById('next-button');
 
     function startGame() {
       gameResults.innerHTML = '';
@@ -96,7 +101,7 @@
       if (firstOne > secondOne) {
         result = 'You won!';
         showResult(result);
-        goToCalculatorButton.style.display = 'inline-block';
+        nextButton.style.display = 'inline-block';
       } else if (firstOne < secondOne) {
         result = 'You lost!';
         showResult(result);
@@ -122,10 +127,15 @@
       startGame();
       playAgainButton.style.display = 'none'; // Hide the button again
       goToCalculatorButton.style.display = 'none'; // Hide the calculator button
+      nextButton.style.display = 'none'; // Hide the next button
     }
 
     function goToCalculator() {
       window.location.href = 'calculator.html';
+    }
+
+    function nextRound() {
+      goToCalculator();
     }
   </script>
 </body>
