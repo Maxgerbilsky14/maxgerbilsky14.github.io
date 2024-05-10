@@ -45,6 +45,7 @@
       margin: 10px;
       border-radius: 5px;
       transition: background-color 0.3s ease;
+      display: none; /* Initially hidden */
     }
 
     .button:hover {
@@ -71,48 +72,44 @@
 
     <div class="result" id="game-results"></div>
 
-    <div id="buttons" style="display: none;">
-      <button class="button" onclick="playAgain()" id="playAgainButton">Play Again</button>
-      <button class="button" onclick="redirectToCalculator()" id="calculatorButton">Go to Calculator</button>
+    <div id="play-again-button" style="display:none;">
+      <button class="button" onclick="playAgain()">Play Again</button>
+    </div>
+
+    <div id="go-to-calculator-button" style="display:none;">
+      <button class="button" onclick="goToCalculator()">Go to Calculator</button>
     </div>
   </div>
 
   <script>
     var gameResults = document.getElementById('game-results');
-    var playAgainButton = document.getElementById('playAgainButton');
-    var calculatorButton = document.getElementById('calculatorButton');
+    var playAgainButton = document.getElementById('play-again-button');
+    var goToCalculatorButton = document.getElementById('go-to-calculator-button');
 
     function startGame() {
       gameResults.innerHTML = '';
 
-      var gameOn = true;
+      var firstOne = Math.floor(Math.random() * 13) + 1;
+      var secondOne = Math.floor(Math.random() * 13) + 1;
 
-      while (gameOn) {
-        var firstOne = Math.floor(Math.random() * 13) + 1;
-        var secondOne = Math.floor(Math.random() * 13) + 1;
-
-        var result = '';
-        if (firstOne > secondOne) {
-          result = 'You won!';
-          showResult(result);
-          playAgainButton.style.display = 'none';
-          calculatorButton.style.display = 'inline-block';
-          break;
-        } else if (firstOne < secondOne) {
-          result = 'You lost!';
-          showResult(result);
-          playAgainButton.style.display = 'inline-block';
-          calculatorButton.style.display = 'none';
-          break;
-        } else {
-          result = 'It\'s a tie!';
-          showResult(result);
-        }
-
-        var gameRoundResult = document.createElement('p');
-        gameRoundResult.textContent = 'Your card: ' + firstOne + ', Opponent\'s card: ' + secondOne + '. ' + result;
-        gameResults.appendChild(gameRoundResult);
+      var result = '';
+      if (firstOne > secondOne) {
+        result = 'You won!';
+        showResult(result);
+        goToCalculatorButton.style.display = 'inline-block';
+      } else if (firstOne < secondOne) {
+        result = 'You lost!';
+        showResult(result);
+        playAgainButton.style.display = 'inline-block';
+      } else {
+        result = 'It\'s a tie!';
+        showResult(result);
+        playAgainButton.style.display = 'inline-block';
       }
+
+      var gameRoundResult = document.createElement('p');
+      gameRoundResult.textContent = 'Your card: ' + firstOne + ', Opponent\'s card: ' + secondOne + '. ' + result;
+      gameResults.appendChild(gameRoundResult);
     }
 
     function showResult(result) {
@@ -123,9 +120,11 @@
 
     function playAgain() {
       startGame();
+      playAgainButton.style.display = 'none'; // Hide the button again
+      goToCalculatorButton.style.display = 'none'; // Hide the calculator button
     }
 
-    function redirectToCalculator() {
+    function goToCalculator() {
       window.location.href = 'calculator.html';
     }
   </script>
