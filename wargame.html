@@ -70,11 +70,19 @@
     <button class="button" onclick="startGame()">Start</button>
 
     <div class="result" id="game-results"></div>
+
+    <div id="buttons" style="display: none;">
+      <button class="button" onclick="nextRound()" id="nextButton">Next</button>
+      <button class="button" onclick="playAgain()" id="playAgainButton">Play Again</button>
+    </div>
   </div>
 
   <script>
+    var gameResults = document.getElementById('game-results');
+    var nextButton = document.getElementById('nextButton');
+    var playAgainButton = document.getElementById('playAgainButton');
+
     function startGame() {
-      var gameResults = document.getElementById('game-results');
       gameResults.innerHTML = '';
 
       var gameOn = true;
@@ -87,11 +95,19 @@
         if (firstOne > secondOne) {
           result = 'You won!';
           showResult(result);
+          nextButton.style.display = 'inline-block';
+          playAgainButton.style.display = 'none';
           break;
         } else if (firstOne < secondOne) {
           result = 'You lost!';
+          showResult(result);
+          nextButton.style.display = 'none';
+          playAgainButton.style.display = 'inline-block';
         } else {
           result = 'It\'s a tie!';
+          showResult(result);
+          nextButton.style.display = 'none';
+          playAgainButton.style.display = 'inline-block';
         }
 
         var gameRoundResult = document.createElement('p');
@@ -101,21 +117,20 @@
     }
 
     function showResult(result) {
-      var gameResults = document.getElementById('game-results');
       var gameRoundResult = document.createElement('p');
       gameRoundResult.textContent = result;
       gameResults.appendChild(gameRoundResult);
-
-      if (result === 'You won!') {
-        redirectToYouTube();
-      }
     }
 
-    function redirectToYouTube() {
+    function nextRound() {
       var proceed = confirm('Are you ready to proceed?');
       if (proceed) {
         window.location.href = 'calculator.html';
       }
+    }
+
+    function playAgain() {
+      startGame();
     }
   </script>
 </body>
