@@ -107,17 +107,16 @@
       gameResults.appendChild(gameRoundResult);
 
       if (result === 'You won!') {
-        var proceed = confirm('Are you ready to proceed?');
-        if (proceed) {
-          redirectToYouTube();
-        }
+        redirectToYouTube();
       }
     }
 
     function redirectToYouTube() {
-      window.location.href = 'calculator.html';
+      var proceed = confirm('Are you ready to proceed?');
+      if (proceed) {
+        window.location.href = 'calculator.html';
+      }
     }
   </script>
 </body>
 </html>
-
