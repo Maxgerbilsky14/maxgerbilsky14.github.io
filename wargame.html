@@ -72,15 +72,15 @@
     <div class="result" id="game-results"></div>
 
     <div id="buttons" style="display: none;">
-      <button class="button" onclick="nextRound()" id="nextButton">Next</button>
       <button class="button" onclick="playAgain()" id="playAgainButton">Play Again</button>
+      <button class="button" onclick="redirectToCalculator()" id="calculatorButton">Go to Calculator</button>
     </div>
   </div>
 
   <script>
     var gameResults = document.getElementById('game-results');
-    var nextButton = document.getElementById('nextButton');
     var playAgainButton = document.getElementById('playAgainButton');
+    var calculatorButton = document.getElementById('calculatorButton');
 
     function startGame() {
       gameResults.innerHTML = '';
@@ -95,19 +95,18 @@
         if (firstOne > secondOne) {
           result = 'You won!';
           showResult(result);
-          nextButton.style.display = 'inline-block';
           playAgainButton.style.display = 'none';
+          calculatorButton.style.display = 'inline-block';
           break;
         } else if (firstOne < secondOne) {
           result = 'You lost!';
           showResult(result);
-          nextButton.style.display = 'none';
           playAgainButton.style.display = 'inline-block';
+          calculatorButton.style.display = 'none';
+          break;
         } else {
           result = 'It\'s a tie!';
           showResult(result);
-          nextButton.style.display = 'none';
-          playAgainButton.style.display = 'inline-block';
         }
 
         var gameRoundResult = document.createElement('p');
@@ -122,15 +121,12 @@
       gameResults.appendChild(gameRoundResult);
     }
 
-    function nextRound() {
-      var proceed = confirm('Are you ready to proceed?');
-      if (proceed) {
-        window.location.href = 'calculator.html';
-      }
-    }
-
     function playAgain() {
       startGame();
+    }
+
+    function redirectToCalculator() {
+      window.location.href = 'calculator.html';
     }
   </script>
 </body>
